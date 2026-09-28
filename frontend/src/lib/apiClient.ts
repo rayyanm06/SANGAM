@@ -4,8 +4,9 @@
  * Stub functions are added here for endpoints used in later phases — they will be
  * filled in as pages are built rather than wired to real data now.
  */
-
-const BASE_URL = (import.meta.env.VITE_API_BASE_URL as string | undefined) ?? 'http://localhost:8000';
+const BASE_URL = (import.meta.env.VITE_API_BASE_URL as string | undefined) !== undefined
+  ? (import.meta.env.VITE_API_BASE_URL as string)
+  : (import.meta.env.DEV ? 'http://localhost:8000' : '');
 
 class ApiError extends Error {
   status: number;
